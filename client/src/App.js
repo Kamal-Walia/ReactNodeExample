@@ -10,7 +10,9 @@ function App() {
         setServerMsg(response);
       })))
 
-      fetch('/greetings2', {method:'post', body: JSON.stringify({name:'kamal'})}).then((res => res.json().then(response => {
+      fetch('/greetings2', {method:'post', headers:{
+        'Content-Type': 'application/json',
+      }, body: JSON.stringify({name:'kamal '})}).then((res => res.json().then(response => {
         console.log('Data', response)
         setServerMsg(response);
       })))

@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser')
 
 dotenv.config();
 
@@ -9,6 +10,9 @@ console.log('KW101', process.env.PORT)
 const PORT = process.env.PORT || 3010
 
 const app = express();
+app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded());
+
 
 const Logger = (req, res, next) => {
     console.log('KW101  - incoming request', req.url, req.method, next)
@@ -41,6 +45,8 @@ app.get('/greetings', (req, res) => {
 });
 
 app.post('/greetings2', (req, res) => {
+    const requestBody = req.body;
+    console.log('REQUEST BODY', req.body.name)
     res.json({message: 'Hello From Server'});
 });
 
