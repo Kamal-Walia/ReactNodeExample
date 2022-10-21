@@ -35,6 +35,10 @@ app.get('/greetings', (req, res) => {
     res.json({message: 'Hello From Server'});
 });
 
+app.post('/greetings2', (req, res) => {
+    res.json({message: 'Hello From Server'});
+});
+
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 })
